@@ -1,0 +1,39 @@
+name: nnntech
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  responsive_builder: ^0.7.0
+  sidebar_drawer: ^0.0.1+2
+  carousel_slider: ^4.2.1
+  video_player: ^2.7.0
+  google_fonts: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+  assets:
+    - assets/dam.mp4
+    - assets/AU.jpg
+    - assets/services/
+    - assets/projects/
+
+
+
+  uses-material-design: true
