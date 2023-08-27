@@ -32,14 +32,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset('assets/dam.mp4')
-      ..initialize().then((_) {
-        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-        setState(() {
-          _controller.setLooping(true);
-          _controller.play();
-        });
-      });
+
   }
 
   void _launchMapsUrl(double lat, double lon) async {
@@ -163,20 +156,30 @@ class _HomeState extends State<Home> {
                   title: Row(
                     children: [
                       const Spacer(),
-                      IconTextSubtitleWidget(
-                        isSubtitleBold: true,
-                          onTap: () {
-                            _launchMapsUrl(25.6654954876655, 55.80036962392935);
-                          },
-                          icon: Icons.location_on_outlined,
-                          title: "Ras Al Khaimah – UAE",
-                          subtitle: "Dubai Investment Park 2 – UAE"),
-                      IconTextSubtitleWidget(
-                        isSubtitleBold: false,
-                          onTap: () {},
-                          icon: Icons.watch_later_outlined,
-                          title: "Monday - Saturday - 8 AM - 6 PM",
-                          subtitle: "Sunday Closed"),
+                      Row(
+                        children: [
+                          IconTextSubtitleWidget(
+                            isSubtitleBold: true,
+                              onTap: () {
+                                _launchMapsUrl(25.66538670757078, 55.7998814376527);
+                              },
+                              icon: Icons.location_on_outlined,
+                              title: "Ras Al Khaimah – UAE",
+                              subtitle: "Dubai Investment Park 2 – UAE"),
+                          SizedBox(width: 5.sw,),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          IconTextSubtitleWidget(
+                            isSubtitleBold: false,
+                              onTap: () {},
+                              icon: Icons.watch_later_outlined,
+                              title: "Monday - Saturday - 8 AM - 6 PM",
+                              subtitle: "Sunday Closed"),
+                          SizedBox(width: 5.sw,),
+                        ],
+                      ),
                       IconTextSubtitleWidget(
                           isSubtitleBold: false,
                           onTap: () async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Const/consts.dart';
 
@@ -15,6 +16,24 @@ class _ContactUsFormState extends State<ContactUsForm> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _messageController = TextEditingController();
+
+
+  Future<void> sendEmail(String toEmail, String subject, String body) async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: toEmail,
+      queryParameters: {
+        'subject': subject,
+        'body': body,
+      },
+    );
+
+    if (await canLaunch(emailUri.toString())) {
+      await launch(emailUri.toString());
+    } else {
+      throw 'Could not launch email';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +125,7 @@ class _ContactUsFormState extends State<ContactUsForm> {
             style: ElevatedButton.styleFrom(
               backgroundColor: Consts.masterColor,
             ),
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 // Perform submission logic here
                 // For example, send the form data to an API or process it locally
@@ -121,6 +140,8 @@ class _ContactUsFormState extends State<ContactUsForm> {
                 _phoneController.clear();
                 _messageController.clear();
 
+
+                await sendEmail('brajesh@pureeng.ae', '${_nameController.text} ${_phoneController.text} ${_emailController.text}', "${_messageController.text}");
                 // Show a success message or navigate to a success screen
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Form submitted successfully')),
