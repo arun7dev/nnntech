@@ -343,35 +343,46 @@ At the heart of our operation is an unwavering commitment to quality and punctua
                                       items: Consts.fabricationsImage.map((url) {
                                         return Builder(
                                           builder: (BuildContext context) {
-                                            return Container(
-                                              width: double.infinity,
-                                              // Set the width to match the container
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 5.0),
+                                            return StatefulBuilder(
+                                              builder: (BuildContext context, StateSetter setState) {
+                                                bool isLoading = true;
+                                                Image.asset(url, fit: BoxFit.cover).image
+                                                    .resolve(ImageConfiguration())
+                                                    .addListener(
+                                                    ImageStreamListener((ImageInfo image, bool synchronous) {
+                                                      if (mounted) { // Check if the widget is still mounted
+                                                        setState(() {
+                                                          isLoading = false;
+                                                        });
+                                                      }
+                                                    }));
 
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(2.sw),
-                                                child: Image.asset(
-                                                  url,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
+                                                return Container(
+                                                  width: double.infinity,
+                                                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(2.sw),
+                                                    child: isLoading
+                                                        ? Center(child: CircularProgressIndicator())
+                                                        : Image.asset(
+                                                      url,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
                                             );
                                           },
                                         );
                                       }).toList(),
                                       options: CarouselOptions(
-                                          autoPlay: true,
-                                          enlargeCenterPage: true,
-                                          aspectRatio: 16 / 9,
-                                          // Adjust the aspect ratio as needed
-                                          height: 20.sw,
-                                          autoPlayInterval:
-                                              Duration(milliseconds: 2000),
-                                          viewportFraction:
-                                              0.3 // Set viewportFraction to 1.0 for full width
-                                          ),
+                                        autoPlay: true,
+                                        enlargeCenterPage: true,
+                                        aspectRatio: 16 / 9,
+                                        height: 20.sw,
+                                        autoPlayInterval: Duration(milliseconds: 2000),
+                                        viewportFraction: 0.3,
+                                      ),
                                     ),
                                   ),
                                   sizingInformation.deviceScreenType ==
@@ -428,36 +439,47 @@ At the heart of our operations, we excel in Precision Machining and Fabrications
                                       items: Consts.machiningImage.map((url) {
                                         return Builder(
                                           builder: (BuildContext context) {
-                                            return Container(
-                                              width: double.infinity,
-                                              // Set the width to match the container
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal: 5.0),
+                                            return StatefulBuilder(
+                                              builder: (BuildContext context, StateSetter setState) {
+                                                bool isLoading = true;
+                                                Image.asset(url, fit: BoxFit.cover).image
+                                                    .resolve(ImageConfiguration())
+                                                    .addListener(
+                                                    ImageStreamListener((ImageInfo image, bool synchronous) {
+                                                      if (mounted) { // Check if the widget is still mounted
+                                                        setState(() {
+                                                          isLoading = false;
+                                                        });
+                                                      }
+                                                    }));
 
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(2.sw),
-                                                child: Image.asset(
-                                                  url,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
+                                                return Container(
+                                                  width: double.infinity,
+                                                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                                                  child: ClipRRect(
+                                                    borderRadius: BorderRadius.circular(2.sw),
+                                                    child: isLoading
+                                                        ? Center(child: CircularProgressIndicator())
+                                                        : Image.asset(
+                                                      url,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
                                             );
                                           },
                                         );
                                       }).toList(),
                                       options: CarouselOptions(
-                                          autoPlay: true,
-                                          //enlargeCenterPage: true,
-                                          aspectRatio: 16 / 9,
-                                          // Adjust the aspect ratio as needed
-                                          height: 20.sw,
-                                          autoPlayInterval:
-                                              Duration(milliseconds: 2000),
-                                          viewportFraction:
-                                              0.2 // Set viewportFraction to 1.0 for full width
-                                          ),
+                                        autoPlay: true,
+                                        aspectRatio: 16 / 9,
+                                        height: 20.sw,
+                                        autoPlayInterval: Duration(milliseconds: 2000),
+                                        viewportFraction: 0.2,
+                                      ),
                                     ),
+
                                   ),
                                 ],
                               ),
