@@ -45,23 +45,44 @@ class _GalleryState extends State<Gallery> {
 
                 spacing: 5.0, // Adjust the spacing between images
                 runSpacing: 5.0, // Adjust the spacing between rows
-                children: List.generate(
+                children:List.generate(
                   widget.combinedImageList.length,
-                      (index) => Container(
-                    width: 300, // Adjust the width as needed
-                    height: 300, // Adjust the height as needed
-                    color: Colors.transparent,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(2.sw),
-                      child: _isLoading
-                          ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                          : Image.asset(
-                        widget.combinedImageList[index],
-                        fit: BoxFit.cover,
-                      ),
+                      (index) => FutureBuilder(
+                    future: precacheImage(
+                      AssetImage(widget.combinedImageList[index]),
+                      context,
                     ),
+                    builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container(
+                          width: 300,
+                          height: 300,
+                          color: Colors.transparent,
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Container(
+                          width: 300,
+                          height: 300,
+                          color: Colors.red, // Placeholder for error state
+                        );
+                      } else {
+                        return Container(
+                          width: 300,
+                          height: 300,
+                          color: Colors.transparent,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(2.sw),
+                            child: Image.asset(
+                              widget.combinedImageList[index],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ),
               )

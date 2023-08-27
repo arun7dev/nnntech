@@ -5,12 +5,13 @@ import '../Const/consts.dart';
 
 
 class IconTextSubtitleWidget extends StatelessWidget {
+  final bool isSubtitleBold;
   final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback onTap; // Add this callback
   const IconTextSubtitleWidget({
-    super.key, required this.icon, required this.title, required this.subtitle, required this.onTap,
+    super.key, required this.icon, required this.title, required this.subtitle, required this.onTap,required this.isSubtitleBold
   });
 
   @override
@@ -24,7 +25,7 @@ class IconTextSubtitleWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,style: TextStyle(fontSize: 1.5.sw,fontWeight: FontWeight.bold),),
-                Text(subtitle,style: TextStyle(fontSize: 1.5.sw),),
+                Text(subtitle,style: TextStyle(fontSize: 1.5.sw,fontWeight: isSubtitleBold ? FontWeight.bold : FontWeight.normal),),
               ]
           )
         ],

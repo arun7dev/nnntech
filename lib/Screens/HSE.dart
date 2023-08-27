@@ -12,13 +12,14 @@ class HSE extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'HSE POLICY',
-          style: GoogleFonts.abel(
-              fontSize: 3.sw,
-              color: Consts.masterColor
-                  .withOpacity(0.5)),
+      style: GoogleFonts.abel(
+          fontWeight: FontWeight.bold,
+          fontSize: 4.sw,
+          color: Consts.masterColor.withOpacity(0.7)),
         ),
         Text(
           '''

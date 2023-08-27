@@ -43,21 +43,21 @@ class FooterElement extends StatelessWidget {
             ),
           ),
           Text(
-            'FAX - +971(7) 2433139',
+            'MOBILE - +971-559502083',
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
             ),
           ),
           Text(
-            'Email – pure@pureeng.ae',
+            'Email – brajesh@pureeng.ae',
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
             ),
           ),
           Text(
-            'www.pureeng.ae',
+            'www.pureeng.com',
             style: TextStyle(
               color: Colors.white,
               fontSize: 14,
@@ -162,27 +162,55 @@ class FooterElement extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10),
-          Text(
-            'ISO 45001:2018 - Occupational Health and Safety Management System',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
+          Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'ISO 9001:2015 - ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                TextSpan(
+                  text: 'Quality Management System\n',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                TextSpan(
+                  text: 'ISO 14001:2015 - ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                TextSpan(
+                  text: 'Environment Management System\n',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                TextSpan(
+                  text: 'ISO 45001:2018 - ',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                TextSpan(
+                  text: 'Occupational Health and Safety Management System',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Text(
-            'ISO 14001:2015 - Environment Management System',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
-          Text(
-            'ISO 9001:2015 - Quality Management System',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-            ),
-          ),
+          )
+
         ],
       ),
     ),

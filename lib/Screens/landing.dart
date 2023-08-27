@@ -85,28 +85,41 @@ class _HomeState extends State<Home> {
             children: [
               Image.asset('assets/logo.png', width: 15.sw),
               if (sizingInformation.screenSize.width > 1600)
-                IconTextSubtitleWidget(
-                    onTap: () {
-                      _launchMapsUrl(25.6654954876655, 55.80036962392935);
-                    },
-                    icon: Icons.location_on_outlined,
-                    title: "Abu Dhabi, UAE",
-                    subtitle: "Ras Al Khaimah – UAE"),
+                Row(
+                  children: [
+                    IconTextSubtitleWidget(
+                      isSubtitleBold: true,
+                        onTap: () {
+                          _launchMapsUrl(25.6654954876655, 55.80036962392935);
+                        },
+                        icon: Icons.location_on_outlined,
+                        title: "Ras Al Khaimah – UAE",
+                        subtitle: "Dubai Investment Park 2 – UAE"),
+                    SizedBox(width: 5.sw,),
+                  ],
+                ),
+              if (sizingInformation.screenSize.width > 1600)
+                Row(
+                  children: [
+                    IconTextSubtitleWidget(
+                      isSubtitleBold: false,
+                        onTap: () {},
+                        icon: Icons.watch_later_outlined,
+                        title: "Monday - Saturday - 8 AM - 6 PM",
+                        subtitle: "Sunday Closed"),
+                    SizedBox(width: 5.sw,),
+                  ],
+                ),
               if (sizingInformation.screenSize.width > 1600)
                 IconTextSubtitleWidget(
-                    onTap: () {},
-                    icon: Icons.watch_later_outlined,
-                    title: "Monday - Saturday - 8 AM - 6 PM",
-                    subtitle: "Sunday Closed"),
-              if (sizingInformation.screenSize.width > 1600)
-                IconTextSubtitleWidget(
+                    isSubtitleBold: false,
                     onTap: () async {
 
                       _launchMapURL();
                     },
                     icon: Icons.mail_outline,
-                    title: "TEL - +971(7) 2433135 / FAX - +971(7) 2433139",
-                    subtitle: "pure@pureeng.ae"),
+                    title: "TEL - +971(7) 2433135",
+                    subtitle: "brajesh@pureeng.ae"),
             ],
           ),
           actions: [
@@ -151,26 +164,29 @@ class _HomeState extends State<Home> {
                     children: [
                       const Spacer(),
                       IconTextSubtitleWidget(
+                        isSubtitleBold: true,
                           onTap: () {
                             _launchMapsUrl(25.6654954876655, 55.80036962392935);
                           },
                           icon: Icons.location_on_outlined,
-                          title: "Abu Dhabi, UAE",
-                          subtitle: "Ras Al Khaimah – UAE"),
+                          title: "Ras Al Khaimah – UAE",
+                          subtitle: "Dubai Investment Park 2 – UAE"),
                       IconTextSubtitleWidget(
+                        isSubtitleBold: false,
                           onTap: () {},
                           icon: Icons.watch_later_outlined,
                           title: "Monday - Saturday - 8 AM - 6 PM",
                           subtitle: "Sunday Closed"),
                       IconTextSubtitleWidget(
+                          isSubtitleBold: false,
                           onTap: () async {
 
                             _launchMapURL();
                           },
                           icon: Icons.mail_outline,
                           title:
-                              "TEL - +971(7) 2433135 / FAX - +971(7) 2433139",
-                          subtitle: "pure@pureeng.ae"),
+                              "TEL - +971(7) 2433135",
+                          subtitle: "brajesh@pureeng.ae"),
                       const Spacer(),
                     ],
                   )),
@@ -200,7 +216,7 @@ class _HomeState extends State<Home> {
                                 borderRadius: BorderRadius.circular(10.sw),
                                 child: ColorFiltered(
                                   colorFilter: ColorFilter.mode(
-                                    Colors.white.withOpacity(0.1),
+                                    Colors.white.withOpacity(0.3),
                                     // Adjust opacity to control brightness
                                     BlendMode.lighten,
                                   ),
@@ -264,32 +280,36 @@ In addition to our sophisticated CNC operations, we offer a full-fledged Convent
 Our accomplished human resource pool comprises technically adept production teams, skilled planners, CAD/CAM engineers, CNC operators, fabricators, and welders. This rich blend of expertise equips us to serve diverse industries, ranging from Oil & Gas, Cement, and Ceramic to Cable, Glass, Sugar, and General Engineering.
 
 At the heart of our operation is an unwavering commitment to quality and punctual delivery. Our foremost goal is to ensure the satisfaction of our customers by consistently delivering top-notch products on time.''',
-                                  textAlign: TextAlign.center,
+                                  textAlign: TextAlign.start,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Image.asset('assets/1.jpeg', height: 12.sw),
-                                    SizedBox(width: 10.sw),
                                     Image.asset('assets/2.jpeg', height: 12.sw),
+                                    SizedBox(width: 10.sw),
+                                    Image.asset('assets/1.jpeg', height: 12.sw),
                                     SizedBox(width: 10.sw),
                                     Image.asset('assets/3.jpeg', height: 12.sw),
                                   ],
                                 ),
                                 Heading(text: 'Our Policies'),
-                                sizingInformation.deviceScreenType ==
-                                        DeviceScreenType.desktop
-                                    ? Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Expanded(child: HSE()),
-                                          Expanded(child: QP())
-                                        ],
-                                      )
-                                    : Column(
-                                        children: [HSE(), QP()],
-                                      )
+                                // sizingInformation.deviceScreenType ==
+                                //         DeviceScreenType.desktop
+                                //     ? Row(
+                                //         crossAxisAlignment:
+                                //             CrossAxisAlignment.start,
+                                //         children: [
+                                //           Expanded(child: HSE()),
+                                //           Expanded(child: QP())
+                                //         ],
+                                //       )
+                                //     : Column(
+                                //         children: [HSE(), QP()],
+                                //       )
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [ QP(),HSE()],
+                                )
                               ],
                             ),
                           ),

@@ -12,13 +12,15 @@ class QP extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'QUALITY POLICY',
-          style: GoogleFonts.abel(
-              fontSize: 3.sw,
-              color: Consts.masterColor
-                  .withOpacity(0.5)),
+      style: GoogleFonts.abel(
+          fontWeight: FontWeight.bold,
+          fontSize: 4.sw,
+          color: Consts.masterColor.withOpacity(0.7)),
+
         ),
         Text('''
 • Employing only the finest raw materials sourced from esteemed manufacturers and suppliers, we engage in the meticulous fabrication of products. Our vigilant quality control department meticulously examines each stage of production, ensuring that only products of supreme quality make their way to the market.
