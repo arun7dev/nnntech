@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nnntech/Const/consts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class Heading extends StatelessWidget {
@@ -15,8 +16,8 @@ class Heading extends StatelessWidget {
         text,
         style: GoogleFonts.robotoSlab(
           fontSize: 5.sw,
-          fontWeight: FontWeight.w300,
-          color: Theme.of(context).primaryColor,
+          fontWeight: FontWeight.bold,
+          color: Consts.masterColor,
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sidebar_drawer/sidebar_drawer.dart';
 
+import 'Const/consts.dart';
 import 'Screens/landing.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner:   false,
         title: '',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Consts.masterColor),
           useMaterial3: true,
         ),
         home:  Home(),
